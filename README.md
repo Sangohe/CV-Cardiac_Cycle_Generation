@@ -89,6 +89,12 @@ Progressive Growing GAN involves using a generator and discriminator model with 
   <img width="256" src="img/gifs/output.gif">
 </p>
 
-The incremental addition of the layers allows the models to effectively learn coarse-level detail and later learn ever-finer detail, both on the generator and discriminator sides.
+The incremental addition of the layers allows the models to effectively learn coarse-level detail and later learn ever-finer detail, both on the generator and discriminator sides. This incremental nature allows the training to first discover large-scale structure of the image distribution and then shift attention to increasingly finer-scale detail, instead of having to learn all scales simultaneously.
 
-This incremental nature allows the training to first discover large-scale structure of the image distribution and then shift attention to increasingly finer-scale detail, instead of having to learn all scales simultaneously.
+Additional to the new way of training, authors propose the following techniques:
+
+- **Minibatch Standard Deviation**: Mini-batch discrimination concatenates an extra feature map onto the discriminator that is made of the feature statistics across all images in a batch. This pushes the batch of generated samples to share similar features to the batch of real samples, otherwise the mini-batch feature layer will easily expose the generated samples as being fake. Progressively-Growing adds a simpler, constant feature map. This constant feature map is derived from the standard deviation of all features in a batch across spatial locations. This final constant map is similarly inserted towards the end of the discriminator.
+
+- **Equalized Learning Rate:** The idea behind equalized learning rate is to scale the weights at each layer with a constant such that the updated weight w’ is scaled to be w’ = w /c, where c is a constant at each layer. This is done during training to keep the weights in the network at a similar scale during training. This approach is unique because usually modern optimizers such as RMSProp and Adam use the standard deviation of the gradient to normalize it. This is problematic in the case where the weight is very large or small, in which case the standard deviation is an insufficient normalizer.
+
+- **Pixel Normalization:** Scales the inputs by the L2 norm
