@@ -85,6 +85,10 @@ This is achieved by a training procedure that involves periods of fine-tuning th
 
 Progressive Growing GAN involves using a generator and discriminator model with the same general structure and starting with very small images. During training, new blocks of convolutional layers are systematically added to both the generator model and the discriminator models.
 
+<p align="center">
+  <img width="256" src="img/gifs/output.gif">
+</p>
+
 The incremental addition of the layers allows the models to effectively learn coarse-level detail and later learn ever-finer detail, both on the generator and discriminator sides.
 
 This incremental nature allows the training to first discover large-scale structure of the image distribution and then shift attention to increasingly finer-scale detail, instead of having to learn all scales simultaneously.
