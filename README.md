@@ -1,4 +1,6 @@
-# Cine MRI Cardiac Cycles Generation using Deep Learning techniques
+<p align="center">
+  <img src="img/bannerCVProject.png">
+</p>
 
 ## Motivation
 [Cardiovascular diseases are the number 1 cause of death globally according to the World Health Organization.](https://www.who.int/health-topics/cardiovascular-diseases/) Early detection, monitoring, and quantification of cardiac alterations are essential for an effective treatment. Cine-MRI sequences are ideal medical sequences used by experts to produce a diagnosis due to the information they give about the cardiac cycle, morphology, and physiology of the walls of the heart. With Machine learning methods, we can remove subjectivity in terms of an expert dependency and support tasks like segmentation and quantification of cardiac patterns. However, these methods require lots of data which are difficult to find in areas such as medicine.
